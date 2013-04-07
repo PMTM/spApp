@@ -1,4 +1,6 @@
-package com.example.spApp;
+package cz.xlinux.spApp;
+
+import cz.xlinux.spApp.R;
 
 import android.app.Activity;
 import android.os.Bundle;
