@@ -46,7 +46,7 @@ public class SPActivity extends Activity implements OnClickListener,
 
 		conn = new APIConnection();
 		
-		Intent intent = new Intent("cz.xlinux.mainApp.core.API.Entrypoint");
+		Intent intent = new Intent("core.API.BindAction");
 		intent.putExtra("version", "1.0");
 		Log.d(LOG_TAG, "intent = " + intent);
 
