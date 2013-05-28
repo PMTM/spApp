@@ -9,6 +9,7 @@
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="core.API.ACCESS" />
+    <uses-permission android:name="core.API.LOCAL_ACCESS" />
 
     <application
         android:allowBackup="true"
