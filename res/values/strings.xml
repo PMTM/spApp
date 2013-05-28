@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">libSp</string>
+    <string name="app_name">Spica</string>
     <string name="getWatchDog">getWatchDog</string>
 
     <string name="pushHist">+Hist</string>

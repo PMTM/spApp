@@ -72,9 +72,13 @@ public class SPActivity extends Activity implements OnClickListener,
 		clr.setOnClickListener(this);
 		// ---
 
+		bindRemoteService();
+	}
+
+	private void bindRemoteService() {
 		conn = new APIConnection(this);
 
-		Intent intent = new Intent("core.API.BindAction");
+		Intent intent = new Intent("core.API.BindRemote");
 		intent.putExtra("version", "1.0");
 		Log.d(LOG_TAG, "intent = " + intent);
 
@@ -249,7 +253,7 @@ public class SPActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void setService(EntryPoint apiService) {
-		Log.d(LOG_TAG, "setService apiService= " + apiService);
+		Log.d(LOG_TAG, "setService apiService = " + apiService);
 		this.apiService = apiService;
 		if (apiService!=null) {
 			try {
