@@ -1,15 +1,16 @@
 package cz.xlinux.spApp;
 
 import cz.xlinux.libAPI.aidl.EntryPoint;
+import cz.xlinux.libAPI.aidl.SecurityWatchdog;
 import cz.xlinux.libAPI.libFce.APIConnection;
 import cz.xlinux.libAPI.libFce.CBOnSvcChange;
 import cz.xlinux.spApp.R;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,14 +39,14 @@ public class SPActivity extends Activity implements OnClickListener,
 		Button clr;
 		clr = (Button) findViewById(R.id.btTestCert);
 		clr.setOnClickListener(this);
-		clr = (Button) findViewById(R.id.btTestSvc);
+		clr = (Button) findViewById(R.id.btGetWatchDog);
 		clr.setOnClickListener(this);
 		clr = (Button) findViewById(R.id.btTestScan);
 		clr.setOnClickListener(this);
 		// ---
 
-		conn = new APIConnection();
-		
+		conn = new APIConnection(this);
+
 		Intent intent = new Intent("core.API.BindAction");
 		intent.putExtra("version", "1.0");
 		Log.d(LOG_TAG, "intent = " + intent);
@@ -59,6 +60,26 @@ public class SPActivity extends Activity implements OnClickListener,
 		mTvLog.setText("...");
 		Log.d(LOG_TAG, "onClick,v=" + v);
 		switch (v.getId()) {
+		case R.id.btGetWatchDog:
+			getWatchDog();
+			break;
+		}
+	}
+
+	private void getWatchDog() {
+		if (apiService != null) {
+			try {
+				SecurityWatchdog wd = apiService.getSecurityWatchdog();
+				if (wd != null) {
+					wd.renewTimer();
+					wd.expireTimerNow();
+				} else {
+					Log.d(LOG_TAG,"Watchdog was not delivered");
+				}
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -76,6 +97,7 @@ public class SPActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void setService(EntryPoint apiService) {
+		Log.d(LOG_TAG, "setService apiService= " + apiService);
 		this.apiService = apiService;
 	}
 }

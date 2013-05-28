@@ -25,12 +25,12 @@
                 android:layout_height="wrap_content" >
 
                 <Button
-                    android:id="@+id/btTestSvc"
+                    android:id="@+id/btGetWatchDog"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
-                    android:text="@string/testSVC" />
+                    android:text="@string/getWatchDog" />
 
                 <Button
                     android:id="@+id/btTestCert"
