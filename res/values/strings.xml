@@ -2,4 +2,12 @@
 <resources>
     <string name="app_name">libSp</string>
     <string name="getWatchDog">getWatchDog</string>
+
+    <string name="pushHist">+Hist</string>
+    <string name="pushCoupon">+Coup</string>
+    <string name="pullCoupon">-Coup</string>
+
+    <string name="pushReceipt">+Receipt</string>
+    <string name="pushTicket">+Ticket</string>
+    <string name="pullTicket">-Ticket</string>
 </resources>

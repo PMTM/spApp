@@ -33,20 +33,60 @@
                     android:text="@string/getWatchDog" />
 
                 <Button
-                    android:id="@+id/btTestCert"
+                    android:id="@+id/btPushHist"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
-                    android:text="@string/testCert" />
+                    android:text="@string/pushHist" />
+
                 <Button
-                    android:id="@+id/btTestScan"
+                    android:id="@+id/btPushCoupon"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
-                    android:text="@string/testScan" />
-                </LinearLayout>
+                    android:text="@string/pushCoupon" />
+
+                <Button
+                    android:id="@+id/btPullCoupon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/pullCoupon" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btPushReceipt"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/pushReceipt" />
+
+                <Button
+                    android:id="@+id/btPushTicket"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/pushTicket" />
+
+                <Button
+                    android:id="@+id/btPullTicket"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/pullTicket" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvLog"
