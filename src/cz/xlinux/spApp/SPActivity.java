@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.DeadObjectException;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
@@ -171,7 +172,11 @@ public class SPActivity extends Activity implements OnClickListener,
 		initTicket();
 		if (ticketCB != null) {
 			try {
+				Log.d(LOG_TAG, "exTicket = " + exTicket);
 				ticketCB.removeTicket(exTicket);
+			} catch (DeadObjectException e) {
+				Log.d(LOG_TAG, "dead object aka other side dead");
+				bindRemoteService();
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -186,6 +191,9 @@ public class SPActivity extends Activity implements OnClickListener,
 		if (ticketCB != null) {
 			try {
 				ticketCB.addTicket(exTicket);
+			} catch (DeadObjectException e) {
+				Log.d(LOG_TAG, "dead object aka other side dead");
+				bindRemoteService();
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -208,7 +216,7 @@ public class SPActivity extends Activity implements OnClickListener,
 			Log.e(LOG_TAG, "no histCB:-(");
 		}
 	}
-	
+
 	private void pushReceipt() {
 		initReceipt();
 		if (receiptCB != null) {
@@ -246,6 +254,7 @@ public class SPActivity extends Activity implements OnClickListener,
 		try {
 			if (isBound) {
 				unbindService(conn);
+				Log.e(LOG_TAG, "Activity destroy was called");
 			}
 		} catch (Throwable t) {
 		}
@@ -255,7 +264,7 @@ public class SPActivity extends Activity implements OnClickListener,
 	public void setService(EntryPoint apiService) {
 		Log.d(LOG_TAG, "setService apiService = " + apiService);
 		this.apiService = apiService;
-		if (apiService!=null) {
+		if (apiService != null) {
 			try {
 				wd = apiService.getSecurityWatchdog();
 				couponCB = apiService.getCouponCB();
