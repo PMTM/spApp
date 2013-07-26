@@ -77,10 +77,10 @@ public class SPActivity extends Activity implements OnClickListener,
 	}
 
 	private void bindRemoteService() {
-		conn = new APIConnection(this);
+		conn = new MyAPIConnection(this);
 
 		Intent intent = new Intent("core.API.BindRemote");
-		intent.putExtra("version", "1.0");
+		intent.putExtra("version", "1.0-SP");
 		Log.d(LOG_TAG, "intent = " + intent);
 
 		isBound = bindService(intent, conn, Context.BIND_AUTO_CREATE);
