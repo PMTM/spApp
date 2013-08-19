@@ -190,7 +190,9 @@ public class SPActivity extends Activity implements OnClickListener,
 		initTicket();
 		if (ticketCB != null) {
 			try {
-				ticketCB.addTicket(exTicket);
+                Log.d(LOG_TAG, "before:ticketCB.addTicket");
+				ticketCB.addTicket("addTicket",exTicket);
+                Log.d(LOG_TAG, "after:ticketCB.addTicket");
 			} catch (DeadObjectException e) {
 				Log.d(LOG_TAG, "dead object aka other side dead");
 				bindRemoteService();
